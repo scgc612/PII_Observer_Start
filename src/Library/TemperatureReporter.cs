@@ -2,7 +2,7 @@ using System;
 
 namespace Observer
 {
-    public class TemperatureReporter
+    public class TemperatureReporter: IObserver
     {
         private bool first;
         private Temperature last;
@@ -20,6 +20,11 @@ namespace Observer
             this.provider.Unsubscribe(this);
         }
 
+        /// <summary>
+        /// Update recibe un valor de Temperatura actualizado
+        /// </summary>
+        /// <param name="T"></param>
+        /// 
         public void Update()
         {
             Console.WriteLine($"The temperature is {this.provider.Current.Degrees}°C at {this.provider.Current.Date:g}");
